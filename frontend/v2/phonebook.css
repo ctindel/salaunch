@@ -1,0 +1,45 @@
+body{
+  background:#f3f3f3;
+  font-family:"Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size:16px;
+}
+h1, h2, h3, h4{
+  color:#333;
+}
+#content{
+  padding:2em;
+  overflow:hidden;
+}
+.addContactForm{
+  float:left;
+  margin-right:30px;
+}
+.addContactForm input{
+  display:block;
+  margin:0 0 15px 0;
+  padding:10px;
+  width:250px;
+  border:1px solid #ccc;
+}
+.phoneBookList{
+  overflow:hidden;
+  border-left:1px solid #ccc;
+  padding-bottom:30px;
+}
+.contact{
+  border-bottom:1px solid #ccc;
+  padding:20px;
+}
+.contact h2{
+  margin:0;
+  font-size: 1.2em;
+}
+.contact p{
+  margin:0;
+}
+button{
+  padding:10px 30px;
+  background:#f8a035;
+  color:#fff;
+  border:none;
+}

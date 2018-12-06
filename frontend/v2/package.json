@@ -1,0 +1,23 @@
+{
+  "name": "hello-react",
+  "version": "1.0.0",
+  "description": "Simple React Hello World",
+  "main": "index.js",
+  "scripts": {
+    "start": "browserify -t babelify --outfile public/generated-app.js phonebook.jsx && echo 'Open http://localhost:8000/ in your browser' && (cd public ; python -m SimpleHTTPServer)",
+    "watch": "watchify -v -t babelify --outfile public/generated-app.js phonebook.jsx"
+  },
+  "author": "",
+  "license": "ISC",
+  "repository": "none",
+  "devDependencies": {
+    "babelify": "^6.3.0",
+    "browserify": "^11.2.0",
+    "watchify": "^3.4.0"
+  },
+  "dependencies": {
+    "react": "latest",
+    "react-bootstrap": "latest",
+    "react-dom": "latest"
+  }
+}

@@ -5,6 +5,7 @@ frameworkVersion: ">=1.1.0 <2.0.0"
 provider:
   name: aws
   region: ${opt:region}
+  endpointType: REGIONAL
   runtime: nodejs6.10
   environment:
     DYNAMODB_TABLE: ${self:service}-${opt:stage, self:provider.stage}
@@ -62,6 +63,18 @@ functions:
 
 resources:
   Resources:
+#    GatewayResponse:
+#      Type: 'AWS::ApiGateway::GatewayResponse'
+#      Properties:
+#        ResponseParameters:
+#          gatewayresponse.header.Access-Control-Allow-Origin: "'*'"
+#          gatewayresponse.header.Access-Control-Allow-Headers: "'*'"
+#          gatewayresponse.header.Access-Control-Allow-Credentials: "'*'"
+#          gatewayresponse.header.Access-Control-Allow-Methods: "'*'"
+#        ResponseType: EXPIRED_TOKEN
+#        RestApiId: 
+#          Ref: 'ApiGatewayRestApi'
+#        StatusCode: '200'
     PhonebookDynamoDbTable:
       Type: 'AWS::DynamoDB::Table'
       DeletionPolicy: Retain
@@ -78,3 +91,15 @@ resources:
         TableName: ${self:provider.environment.DYNAMODB_TABLE}
         StreamSpecification:
           StreamViewType: NEW_AND_OLD_IMAGES
+
+plugins:
+  - serverless-domain-manager
+
+custom:
+  customDomain:
+    domainName: api-${opt:stage}.salaunch.tindel.net
+    stage: dev
+    basePath: ''
+    certificateName: '*.salaunch.tindel.net'
+    createRoute53Record: true
+    endpointType: 'regional'
