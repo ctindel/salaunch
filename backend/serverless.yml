@@ -4,7 +4,7 @@ frameworkVersion: ">=1.1.0 <2.0.0"
 
 provider:
   name: aws
-  region: us-east-2
+  region: ${opt:region}
   runtime: nodejs6.10
   environment:
     DYNAMODB_TABLE: ${self:service}-${opt:stage, self:provider.stage}
@@ -76,3 +76,5 @@ resources:
             KeyType: HASH
         BillingMode: PAY_PER_REQUEST
         TableName: ${self:provider.environment.DYNAMODB_TABLE}
+        StreamSpecification:
+          StreamViewType: NEW_AND_OLD_IMAGES
