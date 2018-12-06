@@ -1,0 +1,19 @@
+Insert:
+
+curl -X POST https://3vikt10eh9.execute-api.us-east-2.amazonaws.com/dev/phonebook --data '{ "firstName": "Chad", "lastName": "Tindel", "email": "ctindel@amazon.com", "mobilePhone": "212-555-1212" }'
+
+Get all:
+
+curl -X GET https://3vikt10eh9.execute-api.us-east-2.amazonaws.com/dev/phonebook
+
+Get one:
+
+curl -X GET https://3vikt10eh9.execute-api.us-east-2.amazonaws.com/dev/phonebook/1e703100-f902-11e8-a2cd-a9a957f039df
+
+Update:
+
+curl -X PUT https://3vikt10eh9.execute-api.us-east-2.amazonaws.com/dev/phonebook/1e703100-f902-11e8-a2cd-a9a957f039df --data '{ "firstName": "Chad", "lastName": "Tindel", "email": "ctindel@amazon.com", "mobilePhone": "212-555-1212" }'
+
+Delete:
+
+curl -X DELETE https://3vikt10eh9.execute-api.us-east-2.amazonaws.com/dev/phonebook/1e703100-f902-11e8-a2cd-a9a957f039df

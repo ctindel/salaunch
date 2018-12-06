@@ -9,12 +9,42 @@ module.exports.update = (event, context, callback) => {
   const data = JSON.parse(event.body);
 
   // validation
-  if (typeof data.text !== 'string' || typeof data.checked !== 'boolean') {
-    console.error('Validation Failed');
+  if (typeof data.firstName !== 'string') {
+    console.error('Validation Failed for firstName Field');
     callback(null, {
       statusCode: 400,
       headers: { 'Content-Type': 'text/plain' },
-      body: 'Couldn\'t update the phonebook entry.',
+      body: 'Couldn\'t create the phonebook entry.',
+    });
+    return;
+  }
+
+  if (typeof data.lastName !== 'string') {
+    console.error('Validation Failed for lastName Field');
+    callback(null, {
+      statusCode: 400,
+      headers: { 'Content-Type': 'text/plain' },
+      body: 'Couldn\'t create the phonebook entry.',
+    });
+    return;
+  }
+
+  if (typeof data.email !== 'string') {
+    console.error('Validation Failed for email Field');
+    callback(null, {
+      statusCode: 400,
+      headers: { 'Content-Type': 'text/plain' },
+      body: 'Couldn\'t create the phonebook entry.',
+    });
+    return;
+  }
+
+  if (typeof data.mobilePhone !== 'string') {
+    console.error('Validation Failed for mobilePhone Field');
+    callback(null, {
+      statusCode: 400,
+      headers: { 'Content-Type': 'text/plain' },
+      body: 'Couldn\'t create the phonebook entry.',
     });
     return;
   }

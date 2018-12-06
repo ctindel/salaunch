@@ -8,8 +8,38 @@ const dynamoDb = new AWS.DynamoDB.DocumentClient();
 module.exports.create = (event, context, callback) => {
   const timestamp = new Date().getTime();
   const data = JSON.parse(event.body);
-  if (typeof data.text !== 'string') {
-    console.error('Validation Failed');
+  if (typeof data.firstName !== 'string') {
+    console.error('Validation Failed for firstName Field');
+    callback(null, {
+      statusCode: 400,
+      headers: { 'Content-Type': 'text/plain' },
+      body: 'Couldn\'t create the phonebook entry.',
+    });
+    return;
+  }
+
+  if (typeof data.lastName !== 'string') {
+    console.error('Validation Failed for lastName Field');
+    callback(null, {
+      statusCode: 400,
+      headers: { 'Content-Type': 'text/plain' },
+      body: 'Couldn\'t create the phonebook entry.',
+    });
+    return;
+  }
+
+  if (typeof data.email !== 'string') {
+    console.error('Validation Failed for email Field');
+    callback(null, {
+      statusCode: 400,
+      headers: { 'Content-Type': 'text/plain' },
+      body: 'Couldn\'t create the phonebook entry.',
+    });
+    return;
+  }
+
+  if (typeof data.mobilePhone !== 'string') {
+    console.error('Validation Failed for mobilePhone Field');
     callback(null, {
       statusCode: 400,
       headers: { 'Content-Type': 'text/plain' },
